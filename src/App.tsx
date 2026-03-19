@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { CheckCircle2, Leaf, Zap, ShieldCheck, ChevronDown, Star } from 'lucide-react';
+import { CheckCircle2, Leaf, Zap, ShieldCheck, ChevronDown, Star, Candy } from 'lucide-react';
 
 const flavors = [
   {
@@ -55,6 +55,26 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   </motion.div>
 );
 
+const ProteinBarIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <g transform="rotate(-15 12 12)">
+      <rect x="1" y="7" width="22" height="10" rx="1" />
+      <path d="M5 7v10" />
+      <path d="M19 7v10" />
+      <text x="12" y="13.5" fontSize="3.5" fontWeight="bold" textAnchor="middle" fill="currentColor" stroke="none" style={{ fontFamily: 'sans-serif', letterSpacing: '0.5px' }}>PROTEIN</text>
+    </g>
+  </svg>
+);
+
 export default function App() {
   return (
     <div className="min-h-screen bg-stone-50 text-stone-800 font-sans selection:bg-orange-500 selection:text-white">
@@ -62,11 +82,11 @@ export default function App() {
       <div className="max-w-2xl mx-auto bg-white shadow-2xl overflow-hidden">
         
         {/* 1. Hero Section */}
-        <section className="relative w-full min-h-[750px] flex flex-col justify-between pt-24 pb-12 px-6 text-center overflow-hidden">
+        <section className="relative w-full min-h-[800px] flex flex-col justify-between pt-24 pb-4 px-6 text-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0 bg-stone-900">
             <img 
-              src="/hero-bg.jpg" 
+              src="/protin.png" 
               alt="단백질 바 메인 연출컷" 
               className="w-full h-full object-cover opacity-90"
               onError={(e) => {
@@ -93,7 +113,7 @@ export default function App() {
           </div>
 
           {/* Nutrition Grid (Bottom) */}
-          <div className="relative z-10 mt-auto pt-32">
+          <div className="relative z-10 mt-auto pt-48">
             <FadeIn delay={0.4}>
               <div className="grid grid-cols-3 gap-4 bg-black/60 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-2xl">
                 <div className="text-center border-r border-white/20">
@@ -149,20 +169,20 @@ export default function App() {
         </section>
 
         {/* 3. Check Points (USP) */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-black">
           <FadeIn>
             <div className="text-center mb-12">
-              <p className="text-stone-500 font-medium tracking-widest text-sm mb-2">Check Point</p>
-              <h2 className="text-3xl font-bold">주요 포인트</h2>
+              <p className="text-[#e1bebe] font-medium tracking-widest text-sm mb-2 drop-shadow-md">Check Point</p>
+              <h2 className="text-[34px] text-white font-bold drop-shadow-lg">주요 포인트</h2>
             </div>
 
             <div className="space-y-8">
               {[
-                { icon: <Zap className="w-8 h-8 text-orange-500" />, title: "질리지 않는 4가지 맛", desc: "더블 초코 · 피넛버터 · 말차 · 베리\n매일 먹어도 질리지 않는 라인업" },
+                { icon: <ProteinBarIcon className="w-8 h-8 text-orange-500" />, title: "질리지 않는 4가지 맛", desc: "더블 초코 · 피넛버터 · 말차 · 베리\n매일 먹어도 질리지 않는 라인업" },
                 { icon: <Leaf className="w-8 h-8 text-green-600" />, title: "당류 2g 미만, 대체당 사용", desc: "설탕 대신 에리스리톨과 알룰로스를 사용해\n혈당 걱정 없이 달콤하게" },
                 { icon: <CheckCircle2 className="w-8 h-8 text-blue-600" />, title: "단백질 20g 함유", desc: "닭가슴살 100g과 맞먹는 단백질량\n한 팩으로 채우는 든든한 한 끼" }
               ].map((point, idx) => (
-                <div key={idx} className="flex items-start gap-6 p-6 bg-stone-50 rounded-2xl border border-stone-100">
+                <div key={idx} className="flex items-start gap-6 p-6 bg-stone-50 rounded-2xl border border-stone-100 shadow-md shadow-white/10 hover:shadow-lg hover:shadow-white/20 transition-shadow duration-300">
                   <div className="bg-white p-3 rounded-xl shadow-sm shrink-0">
                     {point.icon}
                   </div>
